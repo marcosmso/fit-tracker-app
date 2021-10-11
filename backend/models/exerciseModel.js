@@ -6,6 +6,9 @@ const exerciseSchema = new mongoose.Schema({
       required: true,
       ref: 'User'
     },
+    name:{
+      type: String 
+    },
     description: { 
       type: String, 
       required: true },

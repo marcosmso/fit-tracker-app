@@ -22,7 +22,7 @@ const importData = async() => {
     for (let seededUser of createdUsers) {
       iDescription += 1
       const loggedExercises = exercises.map(exercise => {
-        return { ...exercise, user: seededUser._id, description: descriptions[iDescription]}
+        return { ...exercise, user: seededUser._id, name: seededUser.name, description: descriptions[iDescription]}
       })
 
       await Exercise.insertMany(loggedExercises)

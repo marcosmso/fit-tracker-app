@@ -8,6 +8,12 @@ router.route("/").get((req, res) => {
         .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.route("/user/:id").get((req, res) => {
+  Exercise.find({user: req.params.id})
+      .then(exercises => res.json(exercises))
+      .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.route('/add').post((req, res) => {
     const username = req.body.username;
     const description = req.body.description;
