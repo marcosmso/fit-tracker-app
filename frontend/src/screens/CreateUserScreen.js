@@ -1,39 +1,58 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react'
+import axios from 'axios'
 import { Form, Button } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer'
 
 function CreateUserScreen (props) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  // const [state, setState] = useState({})
+  // const [success, setSuccess] = useState()
 
   function onSubmit(e) {
-    e.preventDefault();
-    const user = { username: username }
+    e.preventDefault()
+    
+    const user = { 
+      username: email, 
+      name: name 
+    }
 
     axios.post('http://localhost:5000/users/add', user)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res.data))
 
-    setUsername('');
+    setEmail('')
+    setName('')
   }
 
   return (
     <FormContainer>
       <h3>Create New User</h3>
+
       <Form onSubmit={onSubmit}>
+        <Form.Group>
+          <Form.Label>Email</Form.Label>
+          <Form.Control 
+            type='email' 
+            placeholder='Enter user email'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            ></Form.Control>
+        </Form.Group>
+
         <Form.Group>
           <Form.Label>User</Form.Label>
           <Form.Control 
             type='text' 
             placeholder='Enter new user'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
+            value={name}
+            onChange={e => setName(e.target.value)}
             ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>Create User</Button>
+        <Button className='mt-3' type='submit' variant='primary'>Create User</Button>
       </Form>
     </FormContainer>
-  );
+  )
 }
 
-export default CreateUserScreen;
+export default CreateUserScreen
