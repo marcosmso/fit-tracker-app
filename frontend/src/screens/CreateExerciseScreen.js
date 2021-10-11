@@ -17,7 +17,7 @@ function CreateExerciseScreen () {
   });
   
   useEffect(()=>{ 
-    axios.get('http://localhost:5000/users/')
+    axios.get('/users')
       .then(response => {
         if (response.data.length > 0) {
           setUsers(response.data.map(user => user.username))
@@ -54,7 +54,7 @@ function CreateExerciseScreen () {
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/add', exercise)
+    axios.post('/5000/exercises/add', exercise)
       .then(res => console.log(res.data))
 
     window.location = '/';

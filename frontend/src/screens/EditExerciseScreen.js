@@ -17,7 +17,7 @@ function EditExerciseScreen(props) {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/exercises/'+ props.match.params.id)
+    axios.get('/exercises/'+ props.match.params.id)
       .then(response => {
         setState({
           username: response.data.username,
@@ -32,7 +32,7 @@ function EditExerciseScreen(props) {
   }, [props.match.params.id]) 
 
   useEffect(()=>{ 
-    axios.get('http://localhost:5000/users/')
+    axios.get('/users')
       .then(response => {
         if (response.data.length > 0) {
           setUsers(response.data.map(user => user.username))
@@ -67,7 +67,7 @@ function EditExerciseScreen(props) {
       date: state.date
     }
 
-    axios.post('http://localhost:5000/exercises/update/' + props.match.params.id, exercise)
+    axios.post('/exercises/update/' + props.match.params.id, exercise)
       .then(res => console.log(res.data))
 
     window.location = '/'

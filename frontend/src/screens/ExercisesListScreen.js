@@ -17,7 +17,7 @@ function ExercisesListScreen() {
 
   useEffect(() => {
     if (selectedUser.username !== ''){
-      axios.get(`http://localhost:5000/exercises/user/${selectedUser._id}` )
+      axios.get(`/exercises/user/${selectedUser._id}` )
       .then(response => {
         setExercises(response.data)
       })
@@ -26,7 +26,7 @@ function ExercisesListScreen() {
       })
     }
     else {
-      axios.get('http://localhost:5000/exercises/')
+      axios.get('/exercises')
       .then(response => {
         setExercises(response.data)
       })
@@ -37,7 +37,7 @@ function ExercisesListScreen() {
   }, [selectedUser])
 
   useEffect(()=>{ 
-    axios.get('http://localhost:5000/users/')
+    axios.get('/users')
       .then(response => {
         if (response.data.length > 0) {
           setUsers(response.data)
@@ -50,7 +50,7 @@ function ExercisesListScreen() {
 
   useEffect(() => {
     if (selectedUser.username !== ''){
-      axios.get(`http://localhost:5000/exercises/calendar/user/${selectedUser._id}`)
+      axios.get(`/exercises/calendar/user/${selectedUser._id}`)
       .then(response => {
         if (response.data.length > 0) {
           setDates(response.data)
@@ -61,7 +61,7 @@ function ExercisesListScreen() {
       })
     }
     else {
-      axios.get('http://localhost:5000/exercises/calendar')
+      axios.get('/exercises/calendar')
       .then(response => {
         if (response.data.length > 0) {
           setDates(response.data)
@@ -74,7 +74,7 @@ function ExercisesListScreen() {
   }, [selectedUser])
 
   function deleteExercise(id) {
-    axios.delete('http://localhost:5000/exercises/'+ id)
+    axios.delete('/exercises/'+ id)
       .then(response => { console.log(response.data)})
 
     setExercises(()=>{
