@@ -63,7 +63,6 @@ function ExercisesListScreen() {
     else {
       axios.get('http://localhost:5000/exercises/calendar')
       .then(response => {
-        console.log(response.data)
         if (response.data.length > 0) {
           setDates(response.data)
         }

@@ -29,7 +29,7 @@ function EditExerciseScreen(props) {
       .catch(function (error) {
         console.log(error);
       })
-  }, []) 
+  }, [props.match.params.id]) 
 
   useEffect(()=>{ 
     axios.get('http://localhost:5000/users/')
