@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	},
+	"extensions": {
+		"recommendations": [
+			"donjayamanne.githistory",
+			"eamodio.gitlens",
+			"christian-kohler.path-intellisense",
+			"Gruntfuggly.todo-tree",
+			"umoxfo.vscode-w3cvalidation",
+			"ritwickdey.liveserver"
+		]
+	}
+}
