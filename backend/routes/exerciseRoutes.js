@@ -1,6 +1,7 @@
 import express from 'express'
 const router = express.Router();
 import Exercise from "../models/exerciseModel.js";
+import User from "../models/userModel.js";
 
 router.route("/").get((req, res) => {
     Exercise.find()
@@ -14,22 +15,24 @@ router.route("/user/:id").get((req, res) => {
       .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const description = req.body.description;
-    const duration = req.body.duration;
-    const date = Date.parse(req.body.date);
+router.route('/add').post(async (req, res) => {
+
+    const foundUser = await User.find({username: req.body.user})
 
     const newExercise = new Exercise({
-        username: username,
-        description: description,
-        duration: duration,
-        date: date
+        user: foundUser[0]._id,
+        name: foundUser[0].name,
+        description: req.body.description,
+        duration: req.body.duration,
+        date: Date.parse(req.body.date)
     });
 
     newExercise.save()
         .then(() => res.json('Exercise added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => {
+          console.log(err)
+          res.status(400).json('Error: ' + err)
+        });
 });
 
 router.route('/:id').get((req, res) => {

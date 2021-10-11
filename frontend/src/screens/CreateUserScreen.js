@@ -32,6 +32,7 @@ function CreateUserScreen (props) {
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control 
+            required
             type='email' 
             placeholder='Enter user email'
             value={email}
@@ -42,6 +43,7 @@ function CreateUserScreen (props) {
         <Form.Group>
           <Form.Label>User</Form.Label>
           <Form.Control 
+            required
             type='text' 
             placeholder='Enter new user'
             value={name}

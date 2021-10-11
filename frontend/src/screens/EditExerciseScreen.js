@@ -1,8 +1,8 @@
-import React, { useState, useEffect} from 'react';
-import axios from 'axios';
-import DatePicker from 'react-datepicker';
+import React, { useState, useEffect} from 'react'
+import axios from 'axios'
+import DatePicker from 'react-datepicker'
 import { Form, Button } from 'react-bootstrap'
-import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css"
 import FormContainer from '../components/FormContainer'
 
 function EditExerciseScreen(props) {
@@ -39,9 +39,9 @@ function EditExerciseScreen(props) {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error)
       })
-  }, []);
+  }, [])
 
   function handleChange(event){
     const { name, value } = event.target;
@@ -58,7 +58,7 @@ function EditExerciseScreen(props) {
   }
 
   function onSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     const exercise = {
       username: state.username,
@@ -68,9 +68,9 @@ function EditExerciseScreen(props) {
     }
 
     axios.post('http://localhost:5000/exercises/update/' + props.match.params.id, exercise)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res.data))
 
-    window.location = '/';
+    window.location = '/'
   }
 
   return (
@@ -86,7 +86,7 @@ function EditExerciseScreen(props) {
             onChange={handleChange}>
             {
               users.map(function(user) {
-                return <option key={user} value={user}>{user}</option>;
+                return <option key={user} value={user}>{user}</option>
               })
             }
           </select>
@@ -129,4 +129,4 @@ function EditExerciseScreen(props) {
   )
 }
 
-export default EditExerciseScreen;
+export default EditExerciseScreen

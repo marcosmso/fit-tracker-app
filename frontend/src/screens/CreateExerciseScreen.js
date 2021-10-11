@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css"
 import { Form, Button } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer'
 
 function CreateExerciseScreen () {
 
-  const [users, setUsers ] = useState([]);
+  const [users, setUsers ] = useState([])
 
   const [state, setState] = useState({
     username: '',
@@ -29,7 +29,7 @@ function CreateExerciseScreen () {
   }, []);
 
   function handleChange(event){
-    const { name, value } = event.target;
+    const { name, value } = event.target
     
     setState((prevState) => {
       return { ...prevState, [name]: value }
@@ -46,7 +46,7 @@ function CreateExerciseScreen () {
     e.preventDefault();
 
     const exercise = {
-      username: state.username,
+      user: state.username,
       description: state.description,
       duration: state.duration,
       date: state.date
@@ -55,7 +55,7 @@ function CreateExerciseScreen () {
     console.log(exercise);
 
     axios.post('http://localhost:5000/exercises/add', exercise)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res.data))
 
     window.location = '/';
   }
@@ -72,6 +72,7 @@ function CreateExerciseScreen () {
               className="form-control"
               value={state.username}
               onChange={handleChange}>
+              <option defaultValue=""></option>
               {
                 users.map(function(user) {
                   return <option key={user} value={user}>{user}</option>;
@@ -85,6 +86,7 @@ function CreateExerciseScreen () {
           <input type="text"
               name="description"
               className="form-control"
+              required
               value={state.description}
               onChange={handleChange}
               />
@@ -109,10 +111,10 @@ function CreateExerciseScreen () {
             />
         </Form.Group>
         
-        <Button type='submit' variant='primary'>Create Exercise Log</Button>
+        <Button className='mt-3' type='submit' variant='primary'>Create Exercise Log</Button>
       </Form>
     </FormContainer>
   )
 }
 
-export default CreateExerciseScreen;
+export default CreateExerciseScreen
