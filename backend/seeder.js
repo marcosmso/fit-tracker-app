@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
 import users from './data/users.js'
 import exercises from './data/exercises.js'
-import User from './models/userModel.js'
-import Exercise from './models/exerciseModel.js'
+import User from './models/user_model.js'
+import Exercise from './models/exercise_model.js'
 import connectDB from './config/db.js'
 
 dotenv.config()

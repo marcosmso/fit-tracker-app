@@ -1,8 +1,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
 const router = express.Router()
-import Exercise from "../models/exerciseModel.js"
-import User from "../models/userModel.js"
+import Exercise from "../models/exercise_model.js"
+import User from "../models/user_model.js"
 
 router.route('/').get((req, res) => {
     Exercise.find()

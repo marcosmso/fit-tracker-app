@@ -3,8 +3,8 @@ import dotenv from 'dotenv'
 import express from 'express'
 import connectDB from './config/db.js'
 import cors from 'cors'
-import exerciseRouter from "./routes/exerciseRoutes.js"
-import userRouter from "./routes/UserRoutes.js"
+import exerciseRouter from "./routes/exercise_routes.js"
+import userRouter from "./routes/user_routes.js"
 
 dotenv.config()
 
